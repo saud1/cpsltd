@@ -1,6 +1,6 @@
 <?php
 
-$link = mysqli_connect("localhost","access","root","cpsltd");
-(!$results?die("connection failed"):"Connection Successful");
+$link = mysqli_connect("localhost","dbAdmin","database","cpsltd");
+echo (!$link?die("connection failed"):"");
 
 ?>
