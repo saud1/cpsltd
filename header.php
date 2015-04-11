@@ -2,7 +2,9 @@
 
   <link type="text/css" rel="stylesheet" href="bootstrap.css">
   <link type="text/css" rel="stylesheet" href="stylesheet.css">
-
+<?php
+  include 'authenticate.php';
+?>
   <title>Shopkit | <?php echo $title; ?></title>
 
 </head>
@@ -24,11 +26,11 @@
        <ul class="pull-right">
         <?php
          $pages = array("Main" => "main.php","Products" => "products.php");
-         if(logIn) {
+         if($logIn) {
           $pages["Log Out"] ="logout.php";
           $pages["Manage"] = "manage.php";
          } else {
-          $pages["Log In"] ="login.html";
+          $pages["Log In"] = "login.html";
          }
          foreach ($pages as $key => $value)
          {

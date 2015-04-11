@@ -25,7 +25,7 @@ if($count > 0) {
 	setcookie("time", $time, $expirationTime);
 	setcookie("hash", $hash, $expirationTime);
 
-	header("Location:index.php");
+	header("Location:main.php");
 } else {
 	header("Location:login.html");
 }
