@@ -23,7 +23,13 @@
        </ul>
        <ul class="pull-right">
         <?php
-         $pages = array("Main" => "main.php","Products" => "products.php","Manage" => "manage.php");
+         $pages = array("Main" => "main.php","Products" => "products.php");
+         if(logIn) {
+          $pages["Log Out"] ="logout.php";
+          $pages["Manage"] = "manage.php";
+         } else {
+          $pages["Log In"] ="login.html";
+         }
          foreach ($pages as $key => $value)
          {
           echo "<li><a href=".$value.">".$key."</a></li>";
