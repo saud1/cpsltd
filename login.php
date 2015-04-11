@@ -20,7 +20,7 @@ if($count > 0) {
 	$hash = sha1($userId.$userName.$time.$secret);
 	$expirationTime = strtotime("+2 years");
 
-	setcookie("user", $username, $expirationTime);
+	setcookie("user", $userName, $expirationTime);
 	setcookie("userId", $userId, $expirationTime);
 	setcookie("time", $time, $expirationTime);
 	setcookie("hash", $hash, $expirationTime);
