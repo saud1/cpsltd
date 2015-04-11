@@ -1,0 +1,46 @@
+.menu a {
+color: white;
+font-size:14px;
+font-weight:bold;
+padding: 14px 10px;
+}
+
+.menu  {
+
+}
+
+.header {
+background-color:black;
+height: 30px;
+}
+
+.logo {
+color: white;
+font-size:14px;
+font-weight:bold;
+padding: 14px 10px;
+}
+
+.menu li {
+display:inline;
+text-decoration: none;
+
+}
+
+a:visited {
+text-decoration:none;
+}
+
+a:hover {
+text-decoration:none;
+}
+
+a:active {
+text-decoration:none;
+}
+
+.title {
+margin-left: auto;
+margin-right: auto;
+text-align:center;
+}
