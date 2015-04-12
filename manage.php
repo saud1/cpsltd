@@ -8,6 +8,7 @@ echo '<div class="title"><h2>Management Console</h2></div>';
 
 echo '<div class="addp">
 <h4>Add your product here:</h4>
+
 <form method="post" action="verify.php">
 Product Name:<input type="text" name="pname"><br>
 *Enter a product name.<br><br>

@@ -1,18 +1,57 @@
-<html>
 <head>
 
-	<title>Login</title>
+  <link type="text/css" rel="stylesheet" href="bootstrap.css">
+  <link type="text/css" rel="stylesheet" href="stylesheet.css">
+
+  <title>Shopkit | Login</title>
 
 </head>
+
 <body>
-	<div>
+
+  <!-- Header for each web page -->
+
+  <div class="header">
+
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-8">
+      <div class="menu">
+       <ul class="pull-left">
+        <li class="logo">Shopkit</li>
+       </ul>
+       <ul class="pull-right">
+        
+        	<li><a href="main.php">Main</a></li>;
+        
+        ?>
+       </ul>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+    </div>
+
+  </div>
+
+<!-- Body -->
+
+<div class="body">
+<div class="col-md-2">
+</div>
+<div class="col-md-8">
 		<form method="post" action="login.php">
 
 			Username: <input type="text" name="user"><br>
 			Password: <input type="password" name="password"><br>
 
-			<input type="submit" value="Submit">
+			<input type="submit" value="Register">
+			<br><br>
+			Don't have an account?  <a href="registration.php">Sign up today!</a>
 		</div>
+		<br>
+		
 	</form>
 </body>
 </html>
