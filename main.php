@@ -3,6 +3,8 @@
 <?php
 $title = 'Main';
 
+// main page.
+
 include 'header.php';
 
 echo '<div class="title"><h1>Welcome to CPSLTD</h1></div>';

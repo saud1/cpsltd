@@ -5,8 +5,12 @@ $title = 'Registration';
 
 include 'header.php';
 
+// This page is intended for creating new user accounts.  A user enters their new user name and
+// password, verify's their password, puts in first and last name,
+// and the information is passed on to register.php.
+
 echo "
-<h2>Sign up for a user account today!</h2><br><br> 
+<div class='title'><h2>Sign up for a user account today!</h2></div><br><br> 
 
 <form method = 'post' action='register.php'>
 

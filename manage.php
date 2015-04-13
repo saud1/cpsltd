@@ -6,6 +6,8 @@ include 'header.php';
 
 echo '<div class="title"><h2>Management Console</h2></div>';
 
+// page is technically for adding products, but a lot of the data is incorrect.
+
 echo '<div class="addp">
 <h4>Add your product here:</h4>
 
