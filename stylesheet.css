@@ -52,6 +52,9 @@ text-align:center;
 .search {
 	border-style:solid;
 	border-width: 4px;
-	border-radius: 4px;
-	background-color:grey;
+	border-radius: 7px;
+}
+
+.filter {
+	text-align: left;
 }

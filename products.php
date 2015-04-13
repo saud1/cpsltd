@@ -16,10 +16,19 @@ include 'header.php';
 		<div class = "col-md-3">
 			<div class="search">	
 				<form>
-					Search for Products:
+					Search In Products:
 					<input type="text" name="search">
 					<input type="button" value="search">
 				</form>
+				<br><br>
+			</div>
+			<div class = "filter">
+				<form>
+					Filter Products:
+					<br>
+					Price:
+				</form>
+			</div>
 			</div>
 		</div>
 	</div>
