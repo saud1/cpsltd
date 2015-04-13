@@ -20,15 +20,16 @@ include 'header.php';
 					<input type="text" name="search">
 					<input type="button" value="search">
 				</form>
-				<br><br>
 			</div>
-			<div class = "filter">
+			<div class = "search">
 				<form>
 					Filter Products:
-					<br>
+				<div class = "filter"><br>
 					Price:
 				</form>
 			</div>
+			</div>
+
 			</div>
 		</div>
 	</div>
