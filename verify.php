@@ -14,7 +14,7 @@ echo (!$link?die("Connection Failed."):"");
 
 $sql = "INSERT INTO products(pname,price,lpic,spic,sdescr,ldescr1,ldescr2,istock,available) VALUES($_POST[pname],$_POST[price],$_POST[lpic],$_POST[spic],$_POST[sdescr],$_POST[ldescr1],$_POST[ldescr2],$_POST[istock],TRUE)";
 $results = mysqli_query($link, $sql);
-eco (!$results?die(mysqli_error($link)."<br>".$sql):"Insert Successful.");
+echo (!$results?die(mysqli_error($link)."<br>".$sql):"Insert Successful.");
 
 include 'footer.php';
 ?>
