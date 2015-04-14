@@ -25,7 +25,7 @@ Last Name: <input type='text' name='lname'><br><br>
 </form>
 
 ";
-
+//hi
 
 include 'footer.php';
 ?>
