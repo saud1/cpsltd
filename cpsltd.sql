@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2015 at 12:50 AM
+-- Generation Time: Apr 14, 2015 at 03:45 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -23,24 +23,193 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `CategoryID` int(10) NOT NULL AUTO_INCREMENT,
+  `CategoryName` varchar(40) NOT NULL,
+  `Description` varchar(100) DEFAULT NULL,
+  `Picture` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`CategoryID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE IF NOT EXISTS `customers` (
+  `customerId` int(12) NOT NULL AUTO_INCREMENT,
+  `UserId` int(11) NOT NULL,
+  `FirstName` varchar(50) DEFAULT NULL,
+  `LastName` varchar(50) DEFAULT NULL,
+  `Address1` varchar(100) DEFAULT NULL,
+  `Address2` varchar(100) DEFAULT NULL,
+  `City` varchar(40) DEFAULT NULL,
+  `State` varchar(40) DEFAULT NULL,
+  `Country` varchar(40) NOT NULL,
+  `ZipCode` int(12) DEFAULT NULL,
+  `Phone` varchar(40) NOT NULL,
+  `Email` varchar(40) NOT NULL,
+  `PaymentMethodID` int(10) NOT NULL,
+  `PaymentInfomation` varchar(100) DEFAULT NULL,
+  `BillingAddress` varchar(100) DEFAULT NULL,
+  `BillingCity` varchar(50) DEFAULT NULL,
+  `BillingCountry` varchar(50) DEFAULT NULL,
+  `ShippingAddress` varchar(100) DEFAULT NULL,
+  `ShippingCity` varchar(50) DEFAULT NULL,
+  `ShippingCountry` varchar(50) DEFAULT NULL,
+  `DateJoined` datetime NOT NULL,
+  `LastLoginDate` datetime NOT NULL,
+  PRIMARY KEY (`customerId`),
+  UNIQUE KEY `PaymentMethodID` (`PaymentMethodID`),
+  UNIQUE KEY `UserId` (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderdetails`
+--
+
+CREATE TABLE IF NOT EXISTS `orderdetails` (
+  `ProductID` int(12) NOT NULL,
+  `Price` double NOT NULL,
+  `Quantity` int(11) NOT NULL,
+  `Discount` double NOT NULL,
+  `Total` int(11) NOT NULL,
+  `OrderDetailID` int(10) NOT NULL AUTO_INCREMENT,
+  `OrderID` int(10) NOT NULL,
+  PRIMARY KEY (`OrderDetailID`),
+  UNIQUE KEY `OrderID` (`OrderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE IF NOT EXISTS `orders` (
+  `OrderID` int(10) NOT NULL AUTO_INCREMENT,
+  `CustomerID` int(10) NOT NULL,
+  `OrderDate` datetime NOT NULL,
+  `ShipDate` datetime NOT NULL,
+  `ShipperID` int(10) NOT NULL,
+  `PaymentID` int(10) DEFAULT NULL,
+  `Paid` tinyint(1) NOT NULL,
+  `ShippingCost` int(10) NOT NULL,
+  `TransactionStatus` varchar(50) DEFAULT NULL,
+  `Note` text NOT NULL,
+  `Tax` int(10) NOT NULL,
+  PRIMARY KEY (`OrderID`),
+  UNIQUE KEY `CustomerID` (`CustomerID`),
+  UNIQUE KEY `ShipperID` (`ShipperID`),
+  UNIQUE KEY `PaymentID` (`PaymentID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paymentmethod`
+--
+
+CREATE TABLE IF NOT EXISTS `paymentmethod` (
+  `PaymentMethodID` int(10) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) NOT NULL,
+  `Description` text,
+  `Note` text,
+  PRIMARY KEY (`PaymentMethodID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE IF NOT EXISTS `payments` (
+  `PaymentID` int(10) NOT NULL AUTO_INCREMENT,
+  `OrderID` int(10) NOT NULL,
+  `PaymentMethodID` int(10) NOT NULL,
+  `Allowed` tinyint(1) NOT NULL,
+  `PaymentDate` datetime NOT NULL,
+  `Amount` int(10) NOT NULL,
+  `Note` text,
+  PRIMARY KEY (`PaymentID`),
+  UNIQUE KEY `PaymentMethodID` (`PaymentMethodID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `ProductID` int(12) NOT NULL AUTO_INCREMENT,
+  `ProductName` varchar(50) NOT NULL,
+  `ProductDescription` text,
+  `CategoryID` int(10) NOT NULL,
+  `AvailableSize` int(11) NOT NULL,
+  `AvailableColor` int(11) NOT NULL,
+  `DiscountAvailable` int(11) NOT NULL,
+  `CurrentOrder` int(11) NOT NULL,
+  `UnitPrice` double NOT NULL,
+  `UnitsInStock` smallint(6) NOT NULL,
+  `UnitsOnOrder` smallint(6) NOT NULL,
+  `Picture` varchar(100) DEFAULT NULL,
+  `Note` text,
+  PRIMARY KEY (`ProductID`),
+  UNIQUE KEY `CategoryID` (`CategoryID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE IF NOT EXISTS `review` (
+  `ReviewID` int(12) NOT NULL AUTO_INCREMENT,
+  `Description` text,
+  `ProductID` int(12) NOT NULL,
+  `Rate` int(1) NOT NULL,
+  PRIMARY KEY (`ReviewID`),
+  UNIQUE KEY `ProductID` (`ProductID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shippers`
+--
+
+CREATE TABLE IF NOT EXISTS `shippers` (
+  `ShipperID` int(10) NOT NULL AUTO_INCREMENT,
+  `CompanyName` varchar(100) DEFAULT NULL,
+  `CompanyAddresss` varchar(100) DEFAULT NULL,
+  `PaymentMethodID` int(10) NOT NULL,
+  `Note` text,
+  PRIMARY KEY (`ShipperID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `uId` int(11) NOT NULL AUTO_INCREMENT,
-  `userName` text NOT NULL,
-  `password` text NOT NULL,
-  `fName` text NOT NULL,
-  `lName` text NOT NULL,
-  PRIMARY KEY (`uId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`uId`, `userName`, `password`, `fName`, `lName`) VALUES
-(1, 'uAccess', '2f27cc9230ad19e67adb67c0004cf380ffeafeff', 'User', 'Access');
+  `UsersID` int(11) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Password` varchar(20) NOT NULL,
+  `UserType` varchar(15) NOT NULL,
+  `LastLogon` datetime NOT NULL,
+  PRIMARY KEY (`UsersID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
