@@ -13,11 +13,12 @@ include 'header.php';
 
 <script type="text/javascript">
 
+// var = variable opjects that perform a task.
 var $ = function(x) {
 	return document.getElementById(x);
 }
 
-var createXMLHttp = funtion() {
+var createXMLHttp = function() {
 
 	if(window.XMLHttpRequest) {
 		xHttp = new XMLHttpRequest();
@@ -25,6 +26,32 @@ var createXMLHttp = funtion() {
 		xHttp = new ActiveXObject("Microsoft/XMLHttp");
 	}
 	return xHttp;
+}
+
+var callNameCheck = function() {
+	var user = $("user").value;
+	var url = "nameCheck.php?user=".user;
+	var xmlHttp = createXMLHttp();
+	xmlHttp.open("GET",url);
+	xmlHttp.send();
+	var results="";
+
+	xmlHttp.onreadystatechange = function() {
+		if(xmlHttp.readyState == 4) {
+			var rows = JSON.parse(xmlHttp.responseText);
+			if(rows.length > 0) {
+				$('exist').innerHtml = "Username already taken.  Choose another."
+			}else{
+				$('exist').innerHtml = "";
+			}
+		}
+	}
+}
+
+// window.onload identifies tasks that the browser should perform on load up.
+
+window.onload = function() {
+	$("user").onblur = callNameCheck;
 }
 
 </script>
@@ -35,7 +62,7 @@ var createXMLHttp = funtion() {
 			<form method = 'post' action='register.php'>
 			<table>
 				<tr>	
-					<td>Username:</td><td><input type='text' name='user'><td>
+					<td>Username:</td><td><input type='text' name='user' id='user'><span id="exist">*</span><td>
 				</tr><br>
 				<tr>
 					<td>Password:</td><td><input type='password' name='password1'></td><br>

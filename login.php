@@ -5,7 +5,7 @@ include_once 'connect.php';
 $userName = $_POST['user'];
 $password = sha1($_POST['password']);
 
-$sql = "SELECT uId FROM users WHERE userName = '$userName' AND password = '$password'";
+$sql = "SELECT Username FROM users WHERE Username = '$userName' AND Password = '$password'";
 $results = mysqli_query($link, $sql);
 echo (!$results?die(mysqli_error($link)."<br>".$sql):"");
 
