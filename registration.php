@@ -28,22 +28,20 @@ var createXMLHttp = function() {
 	return xHttp;
 }
 
-var callNameCheck = function() {
+var callAjax = function() {
 	var user = $("user").value;
-	var url = "nameCheck.php?user=".user;
+	var url = "nameCheck.php?user="+user;
 	var xmlHttp = createXMLHttp();
 	xmlHttp.open("GET",url);
 	xmlHttp.send();
 	var results="";
 
 	xmlHttp.onreadystatechange = function() {
-		if(xmlHttp.readyState == 4) {
-			var rows = JSON.parse(xmlHttp.responseText);
-			if(rows.length > 0) {
-				$('exist').innerHtml = "Username already taken.  Choose another."
-			}else{
-				$('exist').innerHtml = "";
-			}
+		console.log(xmlHttp.responseText);
+		if(xmlHttp.responseText>0) {
+			$("exist").innerHTML = "Username already taken.  Please choose another.";
+		}else{
+			$("exist").innerHTML = "";
 		}
 	}
 }
@@ -51,7 +49,7 @@ var callNameCheck = function() {
 // window.onload identifies tasks that the browser should perform on load up.
 
 window.onload = function() {
-	$("user").onblur = callNameCheck;
+	$("user").onblur = callAjax;
 }
 
 </script>
@@ -62,7 +60,8 @@ window.onload = function() {
 			<form method = 'post' action='register.php'>
 			<table>
 				<tr>	
-					<td>Username:</td><td><input type='text' name='user' id='user'><span id="exist">*</span><td>
+					<td>Username:</td><td><input type='text' name='user' id='user'>
+					<span id="exist">*</span></td>
 				</tr><br>
 				<tr>
 					<td>Password:</td><td><input type='password' name='password1'></td><br>
