@@ -46,10 +46,23 @@ var callAjax = function() {
 	}
 }
 
+var checkPassword= function() {
+	var pw1 = $('password1');
+	var pw2 = $('password2');
+
+	if(!empty(passwordStatus1) && pw1 != pw2) {
+		$("passwordStatus2").innerHTML = "Passwords do not match.";
+	} else {
+		$("passwordStatus1").innerHTML = "";
+		$("passwordStatus2").innerHTML = "";
+	}
+}
 // window.onload identifies tasks that the browser should perform on load up.
 
 window.onload = function() {
 	$("user").onblur = callAjax;
+	$("password1").onblur = checkPassword();
+	$("password2").onblur = checkPassword();
 }
 
 </script>
@@ -60,13 +73,15 @@ window.onload = function() {
 			<form method = 'post' action='register.php'>
 			<table>
 				<tr>	
-					<td>Username:</td><td><input type='text' name='user' id='user'>
-					<span id="exist">*</span></td>
+					<td>Username:</td><td><input type='text' name='user' id='user'></td>
+					<td><span id="exist">*</span></td>
 				</tr><br>
 				<tr>
-					<td>Password:</td><td><input type='password' name='password1'></td><br>
+					<td>Password:</td><td><input type='password' name='password1' id='password1'></td>
+					<td><span id="passwordStatus1">*</span></td><br>
 					</tr><tr>
-					<td>Confirm Password:</td><td><input type='password' name='password2'></td>
+					<td>Confirm Password:</td><td><input type='password' name='password2' id='password2'></td>
+					<td><span id="passwordStatus2">*</span></td>
 					<br><br>
 				</tr>
 					
