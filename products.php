@@ -43,6 +43,7 @@ var callAjax = function() {
 
 var createDiv = function(v,w,x,y,z) {
 	var div = document.createElement("div");
+	var image = document.createElement("div");
 }
 
 window.onload = function() {
