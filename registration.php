@@ -46,23 +46,46 @@ var callAjax = function() {
 	}
 }
 
-var checkPassword= function() {
-	var pw1 = $('password1');
-	var pw2 = $('password2');
+var checkPassword = function() {
+	var pw1 = $("password1").value;
+	var pw2 = $("password2").value;
 
-	if(!empty(passwordStatus1) && pw1 != pw2) {
+	if(pw1 != pw2) {
 		$("passwordStatus2").innerHTML = "Passwords do not match.";
-	} else {
-		$("passwordStatus1").innerHTML = "";
-		$("passwordStatus2").innerHTML = "";
+	}else{
+		$("passwordStatus1").innerHTML = "*";
+		$("passwordStatus2").innerHTML = "*";
 	}
+}
+
+var validateHandle = function() {
+	var submitForm = true;
+	var pw1 = $("password1").value;
+	var pw2 = $("password2").value;
+
+	if(pw1 != pw2) {
+		$("passwordStatus2").innerHTML = "Passwords do not match.";
+		submitForm = false;
+	}
+
+	if($("user").value.length < 3) {
+		$("exist").innerHTML = "Username is too short.  Please use a longer name.";
+		submitForm = false;
+	}
+
+	if(submitForm) {
+		$("productForm").submit();
+	}
+
+
 }
 // window.onload identifies tasks that the browser should perform on load up.
 
 window.onload = function() {
 	$("user").onblur = callAjax;
-	$("password1").onblur = checkPassword();
-	$("password2").onblur = checkPassword();
+	$("password1").onblur = checkPassword;
+	$("password2").onblur = checkPassword;
+	$("buttonSubmit").onclick = validateHandle;
 }
 
 </script>
@@ -70,26 +93,29 @@ window.onload = function() {
 <div class='title'><h2>Sign up for a user account today!</h2></div><br><br> 
 	<div class = "search">
 		<div class="product-center">
-			<form method = 'post' action='register.php'>
-			<table>
-				<tr>	
-					<td>Username:</td><td><input type='text' name='user' id='user'></td>
-					<td><span id="exist">*</span></td>
-				</tr><br>
-				<tr>
-					<td>Password:</td><td><input type='password' name='password1' id='password1'></td>
-					<td><span id="passwordStatus1">*</span></td><br>
-					</tr><tr>
-					<td>Confirm Password:</td><td><input type='password' name='password2' id='password2'></td>
-					<td><span id="passwordStatus2">*</span></td>
-					<br><br>
-				</tr>
-					
+			<br>
+			<form method = 'post' action='register.php' id='productForm'>
+				<table>
+					<tr>	
+						<td>Username:</td>
+						<td><input type='text' name='user' id='user'></td>
+						<td><span id="exist">*</span></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type='password' name='password1' id='password1'></td>
+						<td><span id="passwordStatus1">*</span></td>
+					</tr>
+					<tr>
+						<td>Confirm Password:</td>
+						<td><input type='password' name='password2' id='password2'></td>
+						<td><span id="passwordStatus2">*</span></td>
+					</tr>
 				</table>
 				
-				<input type='submit' value='submit'>
-			
+				<input type='button' value='Submit' id='buttonSubmit'>
 			</form>
+			<br>
 		</div>
 	</div>
 </div>
