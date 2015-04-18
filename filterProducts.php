@@ -1,7 +1,8 @@
 <?php
 	include 'connect.php';
 
-	$sql = 'SELECT ProductID, ProductName, ProductDescription, UnitPrice, Picture FROM products';
+	$sql = "SELECT ProductID, ProductName, ProductDescription, UnitPrice, Picture FROM products WHERE UnitsInStock > 0";
+
 	$results = mysqli_query($link,$sql);
 	echo (!$results?die(mysqli_error($link)."<br>".$sql):"");
 

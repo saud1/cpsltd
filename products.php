@@ -26,7 +26,7 @@ var $ = function(x) {
 }
 
 var callAjax = function() {
-	var url = "filterProducts.php"
+	var url = "filterProducts.php";
 	var xmlHttp = createXMLHttp();
 	xmlHttp.open("GET",url);
 	xmlHttp.send();
@@ -79,8 +79,10 @@ var createDiv = function(pId,name,description,price,picture) {
 
 window.onload = function() {
 
-	//$("search").onclick = filterList;
-	//$("filter").onclick = filterList;
+	//$("search").onblur = filterList;
+	//$("sCat").onclick = filterList;
+	//$("sCat").onblur = filterList;
+
 	callAjax();
 }
 
@@ -99,9 +101,20 @@ window.onload = function() {
 			</div><br>
 			<div class = "search">
 				<form>
-					Filter Products:<br>
+					Filter Products:<br><br>
 				<div class = "filter">
-					Price:
+					Category:
+					<select name="sCat" id="sCat">
+						<option value=1>Electronics</option>
+						<option value=2>Auto</option>
+						<option value=3>Cosmetics</option>
+					</select><br>
+					<br>
+					Price:<br>
+					$0-10  <input type="radio" name="price" value=1><br>
+					$11-50 <input type="radio" name="price" value=2><br>
+					$51-100 <input type="radio" name="price" value=3><br>
+					>$101 <input type="radio" name="price" value=4><br>
 				</div>
 				</form>
 			</div>
