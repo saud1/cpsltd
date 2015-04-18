@@ -11,10 +11,10 @@ include_once 'header.php';
 <script type="text/javascript" src="javascript.js">
 
 window.onload=function() {
-	$("user").onblur = callUser;
-	$("password1").onblur = checkPassword;
-	$("password2").onblur = checkPassword;
-	$("buttonSubmit").onclick = validateHandle;
+	$("user").onblur = callUser();
+	$("password1").onblur = checkPassword();
+	$("password2").onblur = checkPassword();
+	$("buttonSubmit").onclick = validateHandle();
 }
 
 </script>
@@ -22,9 +22,9 @@ window.onload=function() {
 <div class='title'><h2>Sign up for a user account today!</h2></div><br><br> 
 	<?php
 		$check = false;
-		if(isset($_GET['reg'])) {
-			$check = true;
-		}
+		//if(isset($_GET['reg'])) {
+		//	$check = true;
+		//}
 		if($check){
 			echo "<br><h4>Account created successfully. <a href='login.html'>Click here to log in</a>.</h4><br>";
 		}
