@@ -1,10 +1,8 @@
-<!doctype html>
-<html>
 
 <?php
 $title = 'Registration';
 
-include 'header.php';
+include_once 'header.php';
 
 // This page is intended for creating new user accounts.  A user enters their new user name and
 // password, verify's their password, puts in first and last name,
@@ -23,9 +21,8 @@ window.onload=function() {
 
 <div class='title'><h2>Sign up for a user account today!</h2></div><br><br> 
 	<?php
+		$check = false;
 		if(isset($_GET['reg'])) {
-			$check = false;
-		}else{
 			$check = true;
 		}
 		if($check){
@@ -66,4 +63,3 @@ window.onload=function() {
 
 include 'footer.php';
 ?>
-</html>

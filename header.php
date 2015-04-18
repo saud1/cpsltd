@@ -5,13 +5,13 @@
 <?php
   include 'authenticate.php';
 ?>
-  <title>Shopkit | <?php echo $title; ?></title>
+  <title>CPS ltd | <?php echo $title; ?></title>
 
 <script type="text/javascript" src="javascript.js">
 
 function checkCart(){
   var cart = getCookie("cart");
-  if(cart!="")
+  if(cart != "")
 
 }
 
