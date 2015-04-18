@@ -9,8 +9,8 @@
 	$count = mysqli_num_rows($results);
 
 	for($i=0;$i<$count;$i++) {
-		list($pid,$name,$description,$price,$picture) = mysqli_fetch_array($results);
-		$rows[$i]["pid"] = $pid;
+		list($pId,$name,$description,$price,$picture) = mysqli_fetch_array($results);
+		$rows[$i]["pId"] = $pId;
 		$rows[$i]["name"] = $name;
 		$rows[$i]["description"] = $description;
 		$rows[$i]["price"] = $price;

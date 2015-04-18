@@ -10,79 +10,10 @@ include 'header.php';
 // password, verify's their password, puts in first and last name,
 // and the information is passed on to register.php.
 ?>
+<script type="text/javascript" src="javascript.js">
 
-<script type="text/javascript">
-
-// var = variable opjects that perform a task.
-var $ = function(x) {
-	return document.getElementById(x);
-}
-
-var createXMLHttp = function() {
-
-	if(window.XMLHttpRequest) {
-		xHttp = new XMLHttpRequest();
-	} else {
-		xHttp = new ActiveXObject("Microsoft/XMLHttp");
-	}
-	return xHttp;
-}
-
-var callAjax = function() {
-	var user = $("user").value;
-	var url = "nameCheck.php?user="+user;
-	var xmlHttp = createXMLHttp();
-	xmlHttp.open("GET",url);
-	xmlHttp.send();
-	var results="";
-
-	xmlHttp.onreadystatechange = function() {
-		console.log(xmlHttp.responseText);
-		if(xmlHttp.responseText>0) {
-			$("exist").innerHTML = "Username already taken.  Please choose another.";
-		}else{
-			$("exist").innerHTML = "";
-		}
-	}
-}
-
-var checkPassword = function() {
-	var pw1 = $("password1").value;
-	var pw2 = $("password2").value;
-
-	if(pw1 != pw2) {
-		$("passwordStatus2").innerHTML = "Passwords do not match.";
-	}else{
-		$("passwordStatus1").innerHTML = "*";
-		$("passwordStatus2").innerHTML = "*";
-	}
-}
-
-var validateHandle = function() {
-	var submitForm = true;
-	var pw1 = $("password1").value;
-	var pw2 = $("password2").value;
-
-	if(pw1 != pw2) {
-		$("passwordStatus2").innerHTML = "Passwords do not match.";
-		submitForm = false;
-	}
-
-	if($("user").value.length < 3) {
-		$("exist").innerHTML = "Username is too short.  Please use a longer name.";
-		submitForm = false;
-	}
-
-	if(submitForm) {
-		$("productForm").submit();
-	}
-
-
-}
-// window.onload identifies tasks that the browser should perform on load up.
-
-window.onload = function() {
-	$("user").onblur = callAjax;
+window.onload=function() {
+	$("user").onblur = callUser;
 	$("password1").onblur = checkPassword;
 	$("password2").onblur = checkPassword;
 	$("buttonSubmit").onclick = validateHandle;
@@ -92,7 +23,12 @@ window.onload = function() {
 
 <div class='title'><h2>Sign up for a user account today!</h2></div><br><br> 
 	<?php
-		if($_GET['reg']) {
+		if(!isset($_GET['reg'])) {
+			$check = $_GET['reg'];
+		}else{
+			$check = false;
+		}
+		if($check){
 			echo "<br><h4>Account created successfully. <a href='login.html'>Click here to log in</a>.</h4><br>";
 		}
 	?>

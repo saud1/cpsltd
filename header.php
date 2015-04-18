@@ -7,6 +7,11 @@
 ?>
   <title>Shopkit | <?php echo $title; ?></title>
 
+<script type="text/javascript" src="javascript.js">
+
+
+</script>
+
 </head>
 
 <body>
@@ -21,14 +26,19 @@
     <div class="col-md-8">
       <div class="menu">
        <ul class="pull-left">
-        <li class="logo">Shopkit</li>
+        <?php
+
+        $count = 0;
+
+        echo "<li class='logo'><a href='cart.php'>You have ".$count." items in your cart.</a></li>";
+        ?>
        </ul>
        <ul class="pull-right">
         <?php
          $pages = array("Main" => "main.php","Products" => "products.php");
          if($logIn) {
           $pages["Log Out"] ="logout.php";
-          $pages["Manage"] = "manage.php";
+          $pages["Account"] = "account.php";
          } else {
           $pages["Log In"] = "login.html";
          }
@@ -36,6 +46,7 @@
          {
           echo "<li><a href=".$value.">".$key."</a></li>";
          }
+
         ?>
        </ul>
       </div>

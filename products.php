@@ -9,81 +9,10 @@ $title = 'Products';
 include 'header.php';
 ?>
 
-<script type="text/javascript">
-
-var createXMLHttp = function() {
-
-	if(window.XMLHttpRequest) {
-		xHttp = new XMLHttpRequest();
-	}else{
-		xHttp = new ActiveXObject("Microsoft/XMLHttp");
-	}
-	return xHttp;
-}
-
-var $ = function(x) {
-	return document.getElementById(x);
-}
-
-var callAjax = function() {
-	var url = "filterProducts.php";
-	var xmlHttp = createXMLHttp();
-	xmlHttp.open("GET",url);
-	xmlHttp.send();
-	var results = "";
-	xmlHttp.onreadystatechange = function() {
-		if(xmlHttp.readyState == 4) {
-			var rows = JSON.parse(xmlHttp.responseText); 
-			var products = document.createElement("div");
-			products.setAttribute("id","products");
-			for(i=0; i<rows.length; i++) {
-				var temp = createDiv(rows[i]["pId"],rows[i]["name"],rows[i]["description"],rows[i]["price"],rows[i]["picture"]);
-				products.appendChild(temp);
-			}
-			$("productList").appendChild(products);
-		}
-
-	}
-}
-
-var createDiv = function(pId,name,description,price,picture) {
-	var div = document.createElement("div");
-	div.setAttribute("id",pId);
-	div.setAttribute("class","product");
-
-	var image = document.createElement("label");
-	image.setAttribute("for","pname");
-	image.innerHTML = "<img src='images/samsung_ssd.jpg' height='30' width='20'>";
-	div.appendChild(image);
-
-	var text = document.createElement("p");
-	text.setAttribute("id","pname");
-	text.innerHTML = name;
-	div.appendChild(text);
-
-	text = document.createElement("p");
-	text.innerHTML = description;
-	div.appendChild(text);
-
-	text = document.createElement("p");
-	text.innerHTML = "$"+price;
-	div.appendChild(text);
-
-	var buy = document.createElement("div");
-	buy.setAttribute("class","buy");
-	buy.innerHTML = "Buy This";
-	div.appendChild(buy);
-
-	return div;
-}
+<script sytle="text/javascript" file="javascript.js">
 
 window.onload = function() {
-
-	//$("search").onblur = filterList;
-	//$("sCat").onclick = filterList;
-	//$("sCat").onblur = filterList;
-
-	callAjax();
+	callProducts();
 }
 
 </script>
@@ -105,6 +34,7 @@ window.onload = function() {
 				<div class = "filter">
 					Category:
 					<select name="sCat" id="sCat">
+						<option value=0>All</option>
 						<option value=1>Electronics</option>
 						<option value=2>Auto</option>
 						<option value=3>Cosmetics</option>
@@ -132,4 +62,4 @@ window.onload = function() {
 <?php
 include 'footer.php';
 ?>
-</htm>
+</html>
