@@ -1,5 +1,20 @@
 <?php
+	include 'connect.php';
 
+	$sql = 'SELECT ProductID, ProductName, ProductDescription, UnitPrice, Picture FROM products';
+	$results = mysqli_query($link,$sql);
+	echo (!$results?die(mysqli_error($link)."<br>".$sql):"");
 
+	$count = mysqli_num_rows($results);
 
+	for($i=0;$i<$count;$i++) {
+		list($pid,$name,$description,$price,$picture) = mysqli_fetch_array($results);
+		$rows[$i]["pid"] = $pid;
+		$rows[$i]["name"] = $name;
+		$rows[$i]["description"] = $description;
+		$rows[$i]["price"] = $price;
+		$rows[$i]["picture"] = $picture;
+	}
+
+	echo json_encode($rows);
 ?>

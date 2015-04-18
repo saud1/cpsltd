@@ -58,3 +58,16 @@ text-align:center;
 .filter {
 	text-align: left;
 }
+
+.buy {
+	width:100px;
+	height:20px;
+	border-style:solid;
+	border-width:2px;
+	border-radius:4px;
+	background-color:red;
+	background-image:url();
+	font-style:bold;
+	margin-left:auto;
+	margin-right:auto;
+}

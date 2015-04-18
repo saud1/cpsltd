@@ -34,22 +34,54 @@ var callAjax = function() {
 	xmlHttp.onreadystatechange = function() {
 		if(xmlHttp.readyState == 4) {
 			var rows = JSON.parse(xmlHttp.responseText); 
+			var products = document.createElement("div");
+			products.setAttribute("id","products");
 			for(i=0; i<rows.length; i++) {
-				createDiv(rows[i]["pId"],rows[i]["name"],rows[i]["description"],rows[i]["price"],rows[i]["picture"]);
+				var temp = createDiv(rows[i]["pId"],rows[i]["name"],rows[i]["description"],rows[i]["price"],rows[i]["picture"]);
+				products.appendChild(temp);
 			}
+			$("productList").appendChild(products);
 		}
+
 	}
 }
 
-var createDiv = function(v,w,x,y,z) {
+var createDiv = function(pId,name,description,price,picture) {
 	var div = document.createElement("div");
-	var image = document.createElement("div");
+	div.setAttribute("id",pId);
+	div.setAttribute("class","product");
+
+	var image = document.createElement("label");
+	image.setAttribute("for","pname");
+	image.innerHTML = "<img src='images/samsung_ssd.jpg' height='30' width='20'>";
+	div.appendChild(image);
+
+	var text = document.createElement("p");
+	text.setAttribute("id","pname");
+	text.innerHTML = name;
+	div.appendChild(text);
+
+	text = document.createElement("p");
+	text.innerHTML = description;
+	div.appendChild(text);
+
+	text = document.createElement("p");
+	text.innerHTML = "$"+price;
+	div.appendChild(text);
+
+	var buy = document.createElement("div");
+	buy.setAttribute("class","buy");
+	buy.innerHTML = "Buy This";
+	div.appendChild(buy);
+
+	return div;
 }
 
 window.onload = function() {
 
-	$("search").onclick = filterList;
-	$("filter").onclick = filterList;
+	//$("search").onclick = filterList;
+	//$("filter").onclick = filterList;
+	callAjax();
 }
 
 </script>
@@ -61,15 +93,14 @@ window.onload = function() {
 		<div class = "col-md-3">
 			<div class="search">	
 				<form>
-					Search In Products:
-					<input type="text" name="search">
-					<input type="button" value="search" id="search">
+					Search In Products:<br>
+					<input type="text" name="search" id="search">
 				</form>
 			</div><br>
 			<div class = "search">
 				<form>
-					Filter Products:
-				<div class = "filter"><br>
+					Filter Products:<br>
+				<div class = "filter">
 					Price:
 				</div>
 				</form>
