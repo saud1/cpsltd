@@ -9,6 +9,17 @@
 
 <script type="text/javascript" src="javascript.js">
 
+function checkCart(){
+  var cart = getCookie("cart");
+  if(cart!="")
+
+}
+
+window.onload=function() {
+  
+  checkCart();  
+
+}
 
 </script>
 
@@ -26,12 +37,8 @@
     <div class="col-md-8">
       <div class="menu">
        <ul class="pull-left">
-        <?php
-
-        $count = 0;
-
-        echo "<li class='logo'><a href='cart.php'>You have ".$count." items in your cart.</a></li>";
-        ?>
+        <div class="cart" id="cart">
+        </div>
        </ul>
        <ul class="pull-right">
         <?php

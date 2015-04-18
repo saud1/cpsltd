@@ -23,10 +23,10 @@ window.onload=function() {
 
 <div class='title'><h2>Sign up for a user account today!</h2></div><br><br> 
 	<?php
-		if(!isset($_GET['reg'])) {
-			$check = $_GET['reg'];
-		}else{
+		if(isset($_GET['reg'])) {
 			$check = false;
+		}else{
+			$check = true;
 		}
 		if($check){
 			echo "<br><h4>Account created successfully. <a href='login.html'>Click here to log in</a>.</h4><br>";
