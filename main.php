@@ -12,7 +12,7 @@ echo '<p>What are you looking for?</p>';
 
 <script type='text/javascript'>var user=userName</script>
 <script type='text/javascript'>
-var register = site.Registry;
+var register = account.Registration;
 <div class='title'><h2>Sign up for a user account today!</h2></div><br><br>
 <?php
 if(isset($_GET['reg'])) {
