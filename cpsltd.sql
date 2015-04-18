@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2015 at 03:45 AM
+-- Generation Time: Apr 18, 2015 at 06:18 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -153,10 +153,6 @@ CREATE TABLE IF NOT EXISTS `products` (
   `ProductName` varchar(50) NOT NULL,
   `ProductDescription` text,
   `CategoryID` int(10) NOT NULL,
-  `AvailableSize` int(11) NOT NULL,
-  `AvailableColor` int(11) NOT NULL,
-  `DiscountAvailable` int(11) NOT NULL,
-  `CurrentOrder` int(11) NOT NULL,
   `UnitPrice` double NOT NULL,
   `UnitsInStock` smallint(6) NOT NULL,
   `UnitsOnOrder` smallint(6) NOT NULL,
@@ -164,7 +160,14 @@ CREATE TABLE IF NOT EXISTS `products` (
   `Note` text,
   PRIMARY KEY (`ProductID`),
   UNIQUE KEY `CategoryID` (`CategoryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `CategoryID`, `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, `Picture`, `Note`) VALUES
+(1, 'Samsung 250gb SSD', 'Samsung''s 250gb solid state drive has enough fast storage for any gamer!', 1, 100, 5, 0, 'samsung_ssd.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -205,11 +208,21 @@ CREATE TABLE IF NOT EXISTS `shippers` (
 CREATE TABLE IF NOT EXISTS `users` (
   `UsersID` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(20) NOT NULL,
-  `Password` varchar(20) NOT NULL,
-  `UserType` varchar(15) NOT NULL,
-  `LastLogon` datetime NOT NULL,
+  `Password` varchar(40) NOT NULL,
+  `UserType` tinyint(1) NOT NULL,
   PRIMARY KEY (`UsersID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UsersID`, `Username`, `Password`, `UserType`) VALUES
+(2, 'uAccess', '2f27cc9230ad19e67adb67c0004cf380ffeafeff', 0),
+(3, 'chris', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 0),
+(4, 'Steve', 'c22b5f9178342609428d6f51b2c5af4c0bde6a42', 0),
+(5, 'stop', 'c22b5f9178342609428d6f51b2c5af4c0bde6a42', 0),
+(6, 'bill', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
