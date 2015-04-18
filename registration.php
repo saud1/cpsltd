@@ -91,6 +91,11 @@ window.onload = function() {
 </script>
 
 <div class='title'><h2>Sign up for a user account today!</h2></div><br><br> 
+	<?php
+		if($_GET['reg']) {
+			echo "<br><h4>Account created successfully. <a href='login.html'>Click here to log in</a>.</h4><br>";
+		}
+	?>
 	<div class = "search">
 		<div class="product-center">
 			<br>

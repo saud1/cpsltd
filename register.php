@@ -7,5 +7,5 @@
 
 	$sql = "INSERT INTO users (Username, Password, UserType) VALUES ('$Username', '$Password', '$UserType')";
 	$results = mysqli_query($link, $sql);
-
+	header ("location:registration.php?reg=TRUE");
 ?>
