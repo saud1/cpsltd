@@ -4,16 +4,26 @@ $title = 'Shopping Cart';
 include 'header.php';
 
 ?>
+Hello<br>
 
-<script type="text/javascript" file="javascript.js">
+<script type="text/javascript">
 
-window.onload = function() {
+var $ = function(x) {
+  return document.getElementById(x);
+}
 
-	//$("search").onblur = filterList;
-	//$("sCat").onclick = filterList;
-	//$("sCat").onblur = filterList;
+var createCookie = function(name, value, days) {
 
-	callAjax();
+}
+
+var checkCookie = function() {
+
+}
+
+windows.onload = function() {
+
+	checkCookie();
+
 }
 
 </script>
@@ -22,14 +32,9 @@ window.onload = function() {
 	<h2>Shopping Cart</h2>
 </div>
 
-<div>
-	<?php
-		if(count($_CART) > 0){
+<div id='cart'>
 
-		}else{
-			echo "You have no items in your cart.";
-		}
-	?>
+	
 </div>
 
 <?php

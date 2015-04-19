@@ -5,19 +5,31 @@
 <?php
   include 'authenticate.php';
 ?>
+
   <title>CPS ltd | <?php echo $title; ?></title>
 
-<script type="text/javascript" src="javascript.js">
+<script text="rel/stylesheet">
 
-function checkCart(){
-  var cart = getCookie("cart");
-  if(cart != "")
-
+var $ = function(x) {
+  return document.getElementById(x);
 }
 
-window.onload=function() {
-  
-  checkCart();  
+var createCookie = function(name, days) {
+  var d = new Date();
+  d.setTime(d.getTime() + (days*24*60*60*1000));
+  var expires = "expires="+d.toUTCString();
+  var array = [];
+  var json_str = JSON.stringify(array);
+  document.cookie = name + "=" + json_str + "; " + expires;
+}
+
+var checkCookie = function() {
+  var user = getCookie("cart");
+}
+
+window.onload = function() {
+
+  createCookie("cart", 2);
 
 }
 
