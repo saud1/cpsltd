@@ -13,6 +13,25 @@ include 'header.php';
  <div class=title><h1>CPS LTD welcomes you</h1></div>
 <p> what are you looking for?</p>
 
+include "products.php"
+
+<form method="post" action="products.php>"
+</form>
+search <input type='text' name='pCat'>
+<select name='pCat'>
+  <option value='0'>All</option>
+  <option value='1'>Cars</option>
+  <option value='2'>Perfume</option>
+</select>
+<input type='submit' value='Go'>
+</form>
+<?php
+include("sessions/connect.php");
+$sTerm="";
+if(!empty($_GET["pCat"])){
+  $sTerm = $_GET["pCat"];
+}
+
 include "login.php"
 
 <form method="post" action="login.php">
