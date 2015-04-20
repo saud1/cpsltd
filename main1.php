@@ -13,7 +13,7 @@ include 'header.php';
  <div class=title><h1>CPS LTD welcomes you</h1></div>
 <p> what are you looking for?</p>
 
-include "products.php"
+include "products.php";
 
 <form method="post" action="products.php>"
 </form>
@@ -32,7 +32,7 @@ if(!empty($_GET["pCat"])){
   $sTerm = $_GET["pCat"];
 }
 
-include "login.php"
+include "login.php";
 
 <form method="post" action="login.php">
  </form>
@@ -41,7 +41,7 @@ Password <input type="password" name="pwd"><br>
 <input type="submit" value="Go">
 
 
-include "registeration.php"
+include "registeration.php";
 <form method="post" action="registeration.php"></form>
 <script type='text/javascript'>var user=userName</script>
 <script type='text/javascript'>
@@ -58,10 +58,13 @@ echo "<br><h4>Account created successfully. <a href='login.html'>Click here to l
 }
 ?>
 
-include "cart.php"
+include "cart.php";
 <form="post" action="cart.php>"
 </form>
 <h1 class="items">Your CPS Shopping Cart</h1>
 <div class="fl">
 <h2 class="items ">Your CPS Shopping Cart</h2>
 </div>
+
+include "footer.php";
+
