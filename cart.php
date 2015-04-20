@@ -4,29 +4,6 @@ $title = 'Shopping Cart';
 include 'header.php';
 
 ?>
-Hello<br>
-
-<script type="text/javascript">
-
-var $ = function(x) {
-  return document.getElementById(x);
-}
-
-var createCookie = function(name, value, days) {
-
-}
-
-var checkCookie = function() {
-
-}
-
-windows.onload = function() {
-
-	checkCookie();
-
-}
-
-</script>
 
 <div class='title'>
 	<h2>Shopping Cart</h2>
@@ -34,10 +11,18 @@ windows.onload = function() {
 
 <div id='cart'>
 
-	
-</div>
-
 <?php
+
+if(!isset($_COOKIE['cart'])){
+	echo "You have no items in your cart.";
+}else{
+	$array = $_COOKIE('CART');
+	$count = $array.length;
+	echo "You have $count items in your cart.";
+}
+
+echo "</div>";
+
 
 include 'footer.php';
 ?>

@@ -50,6 +50,19 @@ window.onload = function() {
       <div class="menu">
        <ul class="pull-left">
         <div class="cart" id="cart">
+          <?php
+            if(!isset($_COOKIE['cart'])) {
+              $cart = array();
+              $value = json_encode($cart);
+              setcookie('cart',$value,time()+1000*60*60*24*5);
+            }
+            $array = json_decode($_COOKIE['cart']);
+            if(count($array) < 1) {
+              echo "<a href='cart.php'>You have 0 items in your cart";
+            }else{
+              echo "<a href='cart.php'>You have " . count($array) . " items in your cart";
+            }
+          ?>
         </div>
        </ul>
        <ul class="pull-right">
