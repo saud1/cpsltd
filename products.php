@@ -70,10 +70,17 @@ var createDiv = function(pId,name,description,price,picture) {
   text.innerHTML = "$"+price;
   div.appendChild(text);
 
+  var button = document.createElement("a");
+  var url = "addCart.php?pId=" + pId;
+  button.setAttribute("href", url);
+
   var buy = document.createElement("div");
   buy.setAttribute("class","buy");
-  buy.innerHTML = "Buy This";
-  div.appendChild(buy);
+  buy.innerHTML = "Add to Cart";
+  
+  button.appendChild(buy);
+
+  div.appendChild(button);
 
   return div;
 }

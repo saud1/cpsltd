@@ -13,13 +13,10 @@ include 'header.php';
 
 <?php
 
-if(!isset($_COOKIE['cart'])){
-	echo "You have no items in your cart.";
-}else{
-	$array = $_COOKIE('CART');
-	$count = $array.length;
-	echo "You have $count items in your cart.";
-}
+	$array = $_COOKIE['cart'];
+	$count = count(json_decode($array));
+
+	echo "You have $count item(s) in your cart.";
 
 echo "</div>";
 
