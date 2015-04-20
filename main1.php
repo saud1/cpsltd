@@ -67,4 +67,5 @@ include "cart.php";
 </div>
 
 include "footer.php";
-
+<?php
+?>
