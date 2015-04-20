@@ -44,9 +44,9 @@ window.onload = function() {
             }
             $array = json_decode($_COOKIE['cart']);
             if(count($array) < 1) {
-              echo "<a href='cart.php'>You have 0 items in your cart";
+              echo "<a href='cart.php'>You have 0 item(s) in your cart";
             }else{
-              echo "<a href='cart.php'>You have " . count($array) . " items in your cart";
+              echo "<a href='cart.php'>You have " . count($array) . " item(s) in your cart";
             }
           ?>
         </div>

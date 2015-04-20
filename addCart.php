@@ -9,7 +9,7 @@
 				$cart[$pId] = 1;
 			}
 			setcookie('cart',json_encode($cart),time()+1000*60*60*24*5);
-			header ("location:products.php");
+			header ("location:products.php?update=true");
 		}else{
 			header ("location:products.php");
 		}

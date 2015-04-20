@@ -122,13 +122,15 @@ window.onload = function() {
 				</div>
 				</form>
 			</div>
-			<div>
-
-			</div>
 		</div>
 	</div>
 	<div class="inline">
 		<div class = "col-md-9" id = "productList">
+      <?php
+        if(isset($_GET(update)) {
+
+        }
+      ?>
 		</div>
 	</div>
 </div>

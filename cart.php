@@ -16,7 +16,11 @@ include 'header.php';
 	$array = $_COOKIE['cart'];
 	$count = count(json_decode($array));
 
-	echo "You have $count item(s) in your cart.";
+	if($count < 1) {
+		echo "You have $count item(s) in your cart.";
+	}else{
+		echo"";
+	}
 
 echo "</div>";
 
