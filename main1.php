@@ -16,12 +16,14 @@ include 'header.php';
 include "login.php"
 
 <form method="post" action="login.php">
+ </form>
 Username <input type="text" name="userName"><br>
 Password <input type="password" name="pwd"><br>
 <input type="submit" value="Go">
-</form>
+
 
 include "registeration.php"
+<form method="post" action="registeration.php"></form>
 <script type='text/javascript'>var user=userName</script>
 <script type='text/javascript'>
 var register = account.Registration;
@@ -37,3 +39,10 @@ echo "<br><h4>Account created successfully. <a href='login.html'>Click here to l
 }
 ?>
 
+include "cart.php"
+<form="post" action="cart.php>"
+</form>
+<h1 class="items">Your CPS Shopping Cart</h1>
+<div class="fl">
+<h2 class="items ">Your CPS Shopping Cart</h2>
+</div>
