@@ -4,6 +4,7 @@
   <link type="text/css" rel="stylesheet" href="stylesheet.css">
 <?php
   include 'authenticate.php';
+  include 'connect.php';
 ?>
 
   <title>CPS ltd | <?php echo $title; ?></title>
