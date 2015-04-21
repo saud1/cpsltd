@@ -6,7 +6,7 @@
 // store, with options to narrow down product selection.
 
 $title = 'Products';
-include 'header.php';
+include_once 'header.php';
 ?>
 
 <script type="text/javascript">
