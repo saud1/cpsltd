@@ -8,6 +8,7 @@ include 'header.php';
  <div class=title><h1>CPS LTD welcomes you</h1></div>
 <p> what are you looking for?</p>
 
+<?php
 include "products.php";
 
 <form method="post" action="products.php>"
@@ -26,6 +27,7 @@ $sTerm="";
 if(!empty($_GET["pCat"])){
   $sTerm = $_GET["pCat"];
 }
+?>
 
 include "login.php";
 
