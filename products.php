@@ -27,7 +27,7 @@ var $ = function(x) {
 
 
 var callProducts = function() {
-  var url = "filterProducts.php";
+  var url = "filterProducts.php"; 
   var xmlHttp = createXMLHttp();
   xmlHttp.open("GET",url);
   xmlHttp.send();

@@ -42,16 +42,15 @@ window.onload = function() {
               $value = json_encode($cart);
               setcookie('cart',$value,time()+1000*60*60*24*5);
             }
-            $array = json_decode($_COOKIE['cart']);
-            if(count($array) < 1) {
-              echo "<a href='cart.php'>You have 0 item(s) in your cart";
-            }else{
+            $array = json_decode($_COOKIE['cart'], true);
+            $numProducts = 0;
+            if(count($array) > 0){
               foreach ($array as $key => $value){
-                $numProducts += $value;
+                $numProducts = $numProducts + $value;
               }
-              echo "<a href='cart.php'>You have " . $numProducts . " item(s) in your cart";
             }
-          ?>
+            echo "<a href='cart.php'>You have " . $numProducts . " item(s) in your cart";
+            ?>
         </div>
        </ul>
        <ul class="pull-right">
