@@ -46,7 +46,10 @@ window.onload = function() {
             if(count($array) < 1) {
               echo "<a href='cart.php'>You have 0 item(s) in your cart";
             }else{
-              echo "<a href='cart.php'>You have " . count($array) . " item(s) in your cart";
+              foreach ($array as $key => $value){
+                $numProducts += $value;
+              }
+              echo "<a href='cart.php'>You have " . $numProducts . " item(s) in your cart";
             }
           ?>
         </div>

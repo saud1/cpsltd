@@ -4,9 +4,8 @@
 		if(isset($_COOKIE['cart'])){
 			$cart = json_decode($_COOKIE['cart']);
 			foreach ($cart as $key => $value) {
-				if($key = $pId){
-					$value = $value+1;
-					$cart($key) = $value;
+				if($key == $pId){
+					$cart($key) = ++$value;
 				}else{
 					$cart($pId) = 1;
 				}
